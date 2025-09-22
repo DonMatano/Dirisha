@@ -16,27 +16,17 @@ fn wndProc(
 }
 
 pub fn run() !void {
-    // const class_name = win32Types.L("New Window Class");
-    // const instance = win32Types.GetCurrentHandleInstance();
+    const class_name = "Sample Class Window";
+    const instance = win32Types.GetCurrentHandleInstance();
 
-    //     const wc: win32Types.WindowClass = .{
-    //         .lpfnWndProc = wndProc,
-    //         .hInstance = instance,
-    //         .lpszClassName = class_name,
-    //     };
-    //
-    //     const hwnd = win32.types.CreateWindowExW(
-    //         .{},
-    //         class_name,
-    //         win32.types.L("New Window"),
-    //         .{},
-    //         win32Types.CW_USE_DEFAULT,
-    //         win32Types.CW_USE_DEFAULT,
-    //         win32Types.CW_USE_DEFAULT,
-    //         win32Types.CW_USE_DEFAULT,
-    //         null,
-    //         null,
-    //         instance,
-    //         null,
-    //     );
+    const wc: win32Types.WinClass = .{
+        .win_proc = wndProc,
+        .instance = instance,
+        .class_name = class_name,
+    };
+    const hwnd = win32.types.CreateWindow(.{
+        .class_name = class_name,
+        .window_name = "Learn to program",
+        .instance = instance,
+    });
 }
