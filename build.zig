@@ -40,6 +40,10 @@ pub fn build(b: *std.Build) void {
         // which requires us to specify a target.
         .target = target,
     });
+    const win32_gen_mod = b.addModule("win32-gen", .{
+        .root_source_file = b.path("src/win32-gen/win32.zig"),
+        .target = target,
+    });
 
     // Here we define an executable. An executable needs to have a root module
     // which needs to expose a `main` function. While we could add a main function
@@ -79,6 +83,7 @@ pub fn build(b: *std.Build) void {
                 // can be extremely useful in case of collisions (which can happen
                 // importing modules from different packages).
                 .{ .name = "Dirisha", .module = mod },
+                .{ .name = "Win32", .module = win32_gen_mod },
             },
         }),
     });

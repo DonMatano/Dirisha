@@ -4,7 +4,7 @@ const DebugAllocator = std.heap.DebugAllocator;
 const w = std.os.windows;
 const win32Types = win32.types;
 
-fn wndProc(handle: win32Types.Handle, message: u32, wParam: usize, lParam: isize) isize {
+fn wndProc(handle: win32Types.HWND, message: u32, wParam: usize, lParam: isize) isize {
     _ = handle;
     _ = message;
     _ = wParam;
